@@ -4,7 +4,7 @@ import { Heading } from 'rebass';
 import { List } from './List';
 
 const DEFAULT_GOOD_MORNING = {
-  imageUrl: 'https://mymodernmet.com/wp/wp-content/uploads/2017/03/sawa-flower-coffee-3.jpg',
+  imageId: '1',
   mainTitle: 'Un Buongiorno Speciale',
   ispirational: 'A gli amici veri e non falsi',
 }
@@ -18,7 +18,7 @@ export const GoodMorningList = React.memo(() => {
         </Col>
       </Row>
       <Row>
-        <List goodMornings={[DEFAULT_GOOD_MORNING,DEFAULT_GOOD_MORNING,DEFAULT_GOOD_MORNING]} />
+        <List goodMornings={[DEFAULT_GOOD_MORNING]} />
       </Row>
     </>
   );

@@ -21,7 +21,7 @@ const emptyStateStyle: React.CSSProperties = {
 export const List: React.FC<Props> = ({ goodMornings }) => {
   const list = useMemo(() => {
     return goodMornings.map((goodMorning) => (
-      <Col sm={6} style={boxColStyle}>
+      <Col key={goodMorning.imageId} sm={6} style={boxColStyle}>
         <GoodMorningBox goodMorning={goodMorning} />
       </Col>
     ));

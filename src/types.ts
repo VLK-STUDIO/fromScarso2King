@@ -1,5 +1,5 @@
 export type GoodMorning = {
-  imageUrl: string;
+  imageId: string;
   mainTitle: string;
   ispirational?: string;
 }

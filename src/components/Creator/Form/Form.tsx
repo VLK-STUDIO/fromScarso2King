@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Heading, Box, Button } from 'rebass';
 import { Input, Label, Select, Textarea } from '@rebass/forms';
 import { GoodMorning } from '../../../types';
+import { useImages } from '../../../state/images';
 
 const inputsMarginBottom = '20px';
 
@@ -21,9 +22,20 @@ const boxStyle = {
   overflow: 'hidden',
 };
 
-const buttonStyle = { cursor: 'pointer', backgroundColor: '#F365B5' }
+const buttonStyle = { cursor: 'pointer', backgroundColor: '#F365B5' };
 
 export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
+
+  const { images } = useImages();
+
+  const options = useMemo(() => {
+    return images.map((image) => (
+      <option value={image.id} key={image.id}>
+        {image.label}
+      </option>
+    ));
+  }, [images]);
+
   return (
     <Box style={boxStyle}>
       <Box backgroundColor="rgba(255, 255, 255, 0.8)" padding="20px">
@@ -31,15 +43,15 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
           Nuovo Buongiornissimo
         </Heading>
         <Box marginBottom={inputsMarginBottom}>
-          <Label htmlFor="imageUrl">Sfondi caffettosi e romanticoni</Label>
+          <Label htmlFor="imageId">Sfondi caffettosi e romanticoni</Label>
           <Select
-            value={goodMorning.imageUrl}
+            value={goodMorning.imageId}
             onChange={onInputChange}
-            id="imageUrl"
-            name="imageUrl"
+            id="imageId"
+            name="imageId"
             backgroundColor="white"
           >
-            <option key="prova">UnoUno</option>
+            {options}
           </Select>
         </Box>
         <Box marginBottom={inputsMarginBottom}>

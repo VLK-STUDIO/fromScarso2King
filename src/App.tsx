@@ -6,7 +6,7 @@ import { GoodMorningList } from './components/GoodMorningList/GoodMorningList';
 
 setConfiguration({ containerWidths: [540, 740, 960, 1140, 1240] });
 
-function App() {
+function App() {  
   return (
     <Layout>
       <MainTitle />

@@ -1,0 +1,45 @@
+{
+  "images": [{
+      "id": "1",
+      "url": "https://mymodernmet.com/wp/wp-content/uploads/2017/03/sawa-flower-coffee-3.jpg",
+      "label": "Fiorellini e caffè",
+      "defaultTextColor": "#000000"
+    },
+    {
+      "id": "2",
+      "url": "https://static2-living.corriereobjects.it/wp-content/uploads/2018/11/villeroy3-660x440.jpg",
+      "label": "Dolcissimo risveglio",
+      "defaultTextColor": "#000000"
+    },
+    {
+      "id": "3",
+      "url": "https://img.freepik.com/premium-photo/cute-teddy-bear-with-flowers_6322-90.jpg?size=626&ext=jpg",
+      "label": "Orsacchione Buongiornino",
+      "defaultTextColor": "#ffffff"
+    },
+    {
+      "id": "4",
+      "url": "https://www.mondopets.it/images/tag/1923/f_15339161286_l.jpg",
+      "label": "Buongiorno Pelosone",
+      "defaultTextColor": "#ffffff"
+    },
+    {
+      "id": "5",
+      "url": "https://i2.wp.com/www.ilvaloreitaliano.it/wp-content/uploads/2020/01/salvini-caff%C3%A8.jpg?fit=517%2C369&ssl=1",
+      "label": "Buongiorno Signor Capitano",
+      "defaultTextColor": "#14EA31"
+    },
+    {
+      "id": "6",
+      "url": "https://www.uominiebusiness.it/Portali/1/Immagini/Politici%204/matteo%20renzi%20porta%20a%20porta-3.jpg",
+      "label": "ShishCoffe time",
+      "defaultTextColor": "#ffffff"
+    },
+    {
+      "id": "7",
+      "url": "https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/TTKLOPZU4I4BVMI5BQUMY2NMWU.jpg",
+      "label": "Kosa ai messo in quel kaffe",
+      "defaultTextColor": "#ffffff"
+    }
+  ]
+}
