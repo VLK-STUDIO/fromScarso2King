@@ -5,7 +5,7 @@ import { GoodMorningBox } from '../GoodMorningBox';
 import { GoodMorning } from '../../types';
 
 const DEFAULT_GOOD_MORNING = {
-  imageUrl: 'https://mymodernmet.com/wp/wp-content/uploads/2017/03/sawa-flower-coffee-3.jpg',
+  imageId: '1',
   mainTitle: 'Un Buongiorno Speciale',
   ispirational: 'A gli amici veri e non falsi',
 }
@@ -16,7 +16,6 @@ const rowStyle = {
 
 export const Creator: React.FC = () => {
   const [goodMorning, setGoodMorning] = useState<GoodMorning>(DEFAULT_GOOD_MORNING);
-
   const onInputChange = useCallback(
     (
       e: React.FormEvent<
