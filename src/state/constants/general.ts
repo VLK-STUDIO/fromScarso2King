@@ -1,1 +1,1 @@
-export const DEFAULT_ERROR = 'failed to fetch';
+export const DEFAULT_ERROR = "failed to fetch";

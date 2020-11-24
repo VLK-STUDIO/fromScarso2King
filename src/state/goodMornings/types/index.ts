@@ -1,2 +1,2 @@
-export * from "./urls";
+export * from "./fetch";
 export * from "./general";

@@ -1,26 +1,26 @@
-import React from 'react';
-import { Box, Heading } from 'rebass';
-import { GoodMorning } from '../../types';
-import { useImage } from '../../state/images/hooks';
-import { ImageValue } from '../../state';
+import React from "react";
+import { Box, Heading } from "rebass";
+import { GoodMorning } from "../../types";
+import { useImage } from "../../state/images/hooks";
+import { ImageValue } from "../../state";
 
 type Props = {
-  goodMorning: GoodMorning;
+  goodMorning?: Partial<GoodMorning>;
 };
 
 const boxStyles = (imgUrl: string) => ({
   backgroundImage: `url(${imgUrl})`,
-  borderRadius: '10px',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center center',
+  borderRadius: "10px",
+  backgroundSize: "cover",
+  backgroundPosition: "center center",
 });
 
 const textCommonStyle = {
-  textShadow: '1px 1px 5px rgba(0,0,0,1)',
+  textShadow: "1px 1px 5px rgba(0,0,0,1)",
 };
 
 export const GoodMorningBox: React.FC<Props> = React.memo(({ goodMorning }) => {
-  const image: ImageValue = useImage(goodMorning.imageId);
+  const image: ImageValue = useImage(goodMorning?.imageId || "1");
   if (!image) {
     return <></>;
   }
@@ -33,7 +33,7 @@ export const GoodMorningBox: React.FC<Props> = React.memo(({ goodMorning }) => {
         style={textCommonStyle}
         color={image.defaultTextColor}
       >
-        {goodMorning.ispirational}
+        {goodMorning?.inspirational}
       </Heading>
       <Heading
         style={textCommonStyle}
@@ -41,7 +41,7 @@ export const GoodMorningBox: React.FC<Props> = React.memo(({ goodMorning }) => {
         fontSize="60px"
         color={image.defaultTextColor}
       >
-        {goodMorning.mainTitle}
+        {goodMorning?.mainTitle}
       </Heading>
     </Box>
   );

@@ -1,37 +1,51 @@
-import { createReducer } from '@reduxjs/toolkit';
-import { fetchImagesRequest, fetchImagesSuccess, fetchImagesFailure } from './actions';
-import { ImagesState, FetchImagesSuccess, FetchImagesFailure } from './types';
+import { createReducer } from "@reduxjs/toolkit";
+import { DomainStatus } from "../types";
+import {
+  fetchImagesRequest,
+  fetchImagesSuccess,
+  fetchImagesFailure,
+} from "./actions";
+import { ImagesState, FetchImagesSuccess, FetchImagesFailure } from "./types";
 
 const initialState: ImagesState = {
   data: {},
-  status: 'idle',
+  status: DomainStatus.IDLE,
   errors: [],
 };
 
 const fetchImagesRequestCase = (state: ImagesState) => ({
-    ...state,
-    status: 'loading',
-  });
+  ...state,
+  status: DomainStatus.LOADING,
+});
 
-const fetchImagesSuccessCase = (state: ImagesState, { payload }: FetchImagesSuccess) => ({
+const fetchImagesSuccessCase = (
+  state: ImagesState,
+  { payload }: FetchImagesSuccess
+) => ({
   ...state,
   data: payload,
-  status: 'loaded',
+  status: DomainStatus.LOADED,
   errors: [],
-})
+});
 
-const fetchImagesFailureCase = (state: ImagesState, { payload }: FetchImagesFailure) => {
+const fetchImagesFailureCase = (
+  state: ImagesState,
+  { payload }: FetchImagesFailure
+) => {
   return {
     ...state,
     data: {},
-    status: 'failed',
+    status: DomainStatus.ERROR,
     errors: payload,
-  }
-}
+  };
+};
 
-export const imagesReducer = createReducer<ImagesState>(initialState, builder => {
-  builder
-    .addCase(fetchImagesRequest, fetchImagesRequestCase)
-    .addCase(fetchImagesSuccess, fetchImagesSuccessCase)
-    .addCase(fetchImagesFailure, fetchImagesFailureCase)
-});
+export const imagesReducer = createReducer<ImagesState>(
+  initialState,
+  (builder) => {
+    builder
+      .addCase(fetchImagesRequest, fetchImagesRequestCase)
+      .addCase(fetchImagesSuccess, fetchImagesSuccessCase)
+      .addCase(fetchImagesFailure, fetchImagesFailureCase);
+  }
+);
