@@ -1,10 +1,23 @@
-import { ImagesState } from './images/types';
+import { GoodMorningState } from "./goodMornings";
+import { ImagesState } from "./images/types";
+
+export enum DomainStatus {
+  IDLE = "IDLE",
+  LOADING = "LOADING",
+  LOADED = "LOADED",
+  ERROR = "ERROR",
+}
+
+export type ListData<T> = {
+  byId: Record<string, T>;
+  allIds: string[];
+};
 
 export type DomainState<T> = {
   data: T;
   rollbackData?: T;
-  status: string;
-  errors: string[];
+  status: DomainStatus;
+  errors?: string[];
 };
 
 export type ReducerError = {
@@ -13,4 +26,5 @@ export type ReducerError = {
 
 export type AppState = {
   images: ImagesState;
+  goodMornings: GoodMorningState;
 };

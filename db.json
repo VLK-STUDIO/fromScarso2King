@@ -1,5 +1,6 @@
 {
-  "images": [{
+  "images": [
+    {
       "id": "1",
       "url": "https://mymodernmet.com/wp/wp-content/uploads/2017/03/sawa-flower-coffee-3.jpg",
       "label": "Fiorellini e caffè",
@@ -40,6 +41,20 @@
       "url": "https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/TTKLOPZU4I4BVMI5BQUMY2NMWU.jpg",
       "label": "Kosa ai messo in quel kaffe",
       "defaultTextColor": "#ffffff"
+    }
+  ],
+  "goodMornings": [
+    {
+      "id": "1",
+      "imageId": "1",
+      "mainTitle": "Un Buongiorno Speciale",
+      "inspirational": "A gli amici veri e non falsi"
+    },
+    {
+      "id": "2",
+      "imageId": "2",
+      "mainTitle": "Buongiorno Amici",
+      "inspirational": "Ci vorrebbe proprio un caffè per iniziare questa giornata"
     }
   ]
 }

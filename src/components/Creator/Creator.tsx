@@ -1,33 +1,29 @@
-import React, { useCallback, useState } from 'react';
-import { Row, Col } from 'react-grid-system';
-import { Form } from './Form';
-import { GoodMorningBox } from '../GoodMorningBox';
-import { GoodMorning } from '../../types';
-
-const DEFAULT_GOOD_MORNING = {
-  imageId: '1',
-  mainTitle: 'Un Buongiorno Speciale',
-  ispirational: 'A gli amici veri e non falsi',
-}
+import React, { useCallback, useState } from "react";
+import { Row, Col } from "react-grid-system";
+import { Form } from "./Form";
+import { GoodMorningBox } from "../GoodMorningBox";
+import { GoodMorning } from "../../types";
 
 const rowStyle = {
-  paddingBottom: '90px'
-}
+  paddingBottom: "90px",
+};
 
 export const Creator: React.FC = () => {
-  const [goodMorning, setGoodMorning] = useState<GoodMorning>(DEFAULT_GOOD_MORNING);
+  const [goodMorning, setGoodMorning] = useState<
+    Partial<GoodMorning> | undefined
+  >();
   const onInputChange = useCallback(
     (
       e: React.FormEvent<
         HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-      >,
+      >
     ) => {
-      setGoodMorning(({
-        ...goodMorning,
+      setGoodMorning({
+        ...(goodMorning || {}),
         [e?.currentTarget?.name]: e?.currentTarget?.value,
-      }));
+      });
     },
-    [goodMorning],
+    [goodMorning]
   );
 
   return (

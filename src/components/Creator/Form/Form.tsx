@@ -1,31 +1,30 @@
-import React, { useMemo } from 'react';
-import { Heading, Box, Button } from 'rebass';
-import { Input, Label, Select, Textarea } from '@rebass/forms';
-import { GoodMorning } from '../../../types';
-import { useImages } from '../../../state/images';
+import React, { useMemo } from "react";
+import { Heading, Box, Button } from "rebass";
+import { Input, Label, Select, Textarea } from "@rebass/forms";
+import { GoodMorning } from "../../../types";
+import { useImages } from "../../../state/images";
 
-const inputsMarginBottom = '20px';
+const inputsMarginBottom = "20px";
 
 type Props = {
-  goodMorning: GoodMorning;
+  goodMorning?: Partial<GoodMorning>;
   onInputChange: (
     e: React.FormEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >,
+    >
   ) => void;
 };
 
 const boxStyle = {
-  borderRadius: '10px',
+  borderRadius: "10px",
   backgroundImage:
-    'url(https://static2-living.corriereobjects.it/wp-content/uploads/2018/11/villeroy3-660x440.jpg)',
-  overflow: 'hidden',
+    "url(https://static2-living.corriereobjects.it/wp-content/uploads/2018/11/villeroy3-660x440.jpg)",
+  overflow: "hidden",
 };
 
-const buttonStyle = { cursor: 'pointer', backgroundColor: '#F365B5' };
+const buttonStyle = { cursor: "pointer", backgroundColor: "#F365B5" };
 
 export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
-
   const { images } = useImages();
 
   const options = useMemo(() => {
@@ -45,7 +44,7 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
         <Box marginBottom={inputsMarginBottom}>
           <Label htmlFor="imageId">Sfondi caffettosi e romanticoni</Label>
           <Select
-            value={goodMorning.imageId}
+            value={goodMorning?.imageId}
             onChange={onInputChange}
             id="imageId"
             name="imageId"
@@ -58,7 +57,7 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
           <Label htmlFor="mainTitle">Buongiornissimo Principale</Label>
           <Input
             onChange={onInputChange}
-            value={goodMorning.mainTitle}
+            value={goodMorning?.mainTitle}
             backgroundColor="white"
             id="mainTitle"
             name="mainTitle"
@@ -77,7 +76,7 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
             maxLength={100}
             backgroundColor="white"
             rows={6}
-            value={goodMorning.ispirational}
+            value={goodMorning?.inspirational}
           />
         </Box>
         <Button variant="primary" width="100%" style={buttonStyle}>
