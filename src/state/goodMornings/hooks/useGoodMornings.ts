@@ -1,6 +1,10 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGoodMornings as fetchGoodMorningsAction } from "../actions";
+import { GoodMorning } from "../../../types";
+import {
+  fetchGoodMornings as fetchGoodMorningsAction,
+  createGoodMorning as createGoodMorningAction,
+} from "../actions";
 import {
   getGoodMornings,
   getGoodMorningsAreFailed,
@@ -21,6 +25,13 @@ export function useGoodMornings() {
     dispatch(fetchGoodMorningsAction());
   }, [dispatch]);
 
+  const createGoodMorning = useCallback(
+    (goodMorning: Partial<GoodMorning>) => {
+      dispatch(createGoodMorningAction(goodMorning));
+    },
+    [dispatch]
+  );
+
   useEffect(() => {
     if (isIdle) {
       fetchGoodMornings();
@@ -34,5 +45,6 @@ export function useGoodMornings() {
     isLoaded,
     isLoading,
     fetchGoodMornings,
+    createGoodMorning,
   };
 }

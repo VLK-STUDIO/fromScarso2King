@@ -5,7 +5,7 @@ import { useImage } from "../../state/images/hooks";
 import { ImageValue } from "../../state";
 
 type Props = {
-  goodMorning?: Partial<GoodMorning>;
+  goodMorning: Partial<GoodMorning>;
 };
 
 const boxStyles = (imgUrl: string) => ({
@@ -20,7 +20,7 @@ const textCommonStyle = {
 };
 
 export const GoodMorningBox: React.FC<Props> = React.memo(({ goodMorning }) => {
-  const image: ImageValue = useImage(goodMorning?.imageId || "1");
+  const image: ImageValue = useImage(goodMorning.imageId || "1");
   if (!image) {
     return <></>;
   }
@@ -33,7 +33,7 @@ export const GoodMorningBox: React.FC<Props> = React.memo(({ goodMorning }) => {
         style={textCommonStyle}
         color={image.defaultTextColor}
       >
-        {goodMorning?.inspirational}
+        {goodMorning.inspirational}
       </Heading>
       <Heading
         style={textCommonStyle}
@@ -41,7 +41,7 @@ export const GoodMorningBox: React.FC<Props> = React.memo(({ goodMorning }) => {
         fontSize="60px"
         color={image.defaultTextColor}
       >
-        {goodMorning?.mainTitle}
+        {goodMorning.mainTitle}
       </Heading>
     </Box>
   );

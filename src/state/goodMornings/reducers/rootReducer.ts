@@ -1,12 +1,10 @@
 import { createReducer, getType } from "@reduxjs/toolkit";
 import { DomainStatus } from "../../types";
-import {
-  fetchGoodMorningsRequest,
-  fetchGoodMorningsSuccess,
-  fetchGoodMorningsFailure,
-} from "../actions";
+import * as fetchActions from "../actions/fetch";
+import * as createActions from "../actions/create";
 import { GoodMorningState } from "../types";
 import * as fetchCases from "./fetch";
+import * as createCases from "./create";
 
 const initialState: GoodMorningState = {
   data: {
@@ -21,16 +19,28 @@ export const goodMorningsRootReducer = createReducer<GoodMorningState>(
   (builder) => {
     builder
       .addCase(
-        fetchGoodMorningsRequest,
+        fetchActions.fetchGoodMorningsRequest,
         fetchCases.fetchGoodMorningsRequestCase
       )
       .addCase(
-        getType(fetchGoodMorningsSuccess),
+        getType(fetchActions.fetchGoodMorningsSuccess),
         fetchCases.fetchGoodMorningsSuccessCase
       )
       .addCase(
-        getType(fetchGoodMorningsFailure),
+        getType(fetchActions.fetchGoodMorningsFailure),
         fetchCases.fetchGoodMorningsFailureCase
+      )
+      .addCase(
+        getType(createActions.createGoodMorningRequest),
+        createCases.createGoodMorningsRequestCase
+      )
+      .addCase(
+        getType(createActions.createGoodMorningSuccess),
+        createCases.createGoodMorningsSuccessCase
+      )
+      .addCase(
+        getType(createActions.createGoodMorningFailure),
+        createCases.createGoodMorningsFailureCase
       );
   }
 );

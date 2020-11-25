@@ -1,6 +1,6 @@
-import { FilterKeys } from "../types";
-import { convertArrayToObjectByKey } from "../utils";
-import { ListData } from "./types";
+import { FilterKeys } from "../../types";
+import { convertArrayToObjectByKey } from "../../utils";
+import { ListData } from "../types";
 
 export function formatListToState<T extends object>(
   list: T[],
