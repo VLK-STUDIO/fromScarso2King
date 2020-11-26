@@ -9,9 +9,7 @@ const rowStyle = {
 };
 
 export const Creator: React.FC = () => {
-  const [goodMorning, setGoodMorning] = useState<
-    Partial<GoodMorning> | undefined
-  >();
+  const [goodMorning, setGoodMorning] = useState<Partial<GoodMorning>>({});
   const onInputChange = useCallback(
     (
       e: React.FormEvent<
@@ -19,7 +17,7 @@ export const Creator: React.FC = () => {
       >
     ) => {
       setGoodMorning({
-        ...(goodMorning || {}),
+        ...goodMorning,
         [e?.currentTarget?.name]: e?.currentTarget?.value,
       });
     },

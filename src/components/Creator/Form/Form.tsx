@@ -1,13 +1,14 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useCallback } from "react";
 import { Heading, Box, Button } from "rebass";
 import { Input, Label, Select, Textarea } from "@rebass/forms";
 import { GoodMorning } from "../../../types";
 import { useImages } from "../../../state/images";
+import { useGoodMornings } from "../../../state/goodMornings";
 
 const inputsMarginBottom = "20px";
 
 type Props = {
-  goodMorning?: Partial<GoodMorning>;
+  goodMorning: Partial<GoodMorning>;
   onInputChange: (
     e: React.FormEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
@@ -26,6 +27,11 @@ const buttonStyle = { cursor: "pointer", backgroundColor: "#F365B5" };
 
 export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
   const { images } = useImages();
+  const { createGoodMorning } = useGoodMornings();
+
+  const onSubmit = useCallback(() => {
+    createGoodMorning(goodMorning);
+  }, [createGoodMorning, goodMorning]);
 
   const options = useMemo(() => {
     return images.map((image) => (
@@ -44,7 +50,7 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
         <Box marginBottom={inputsMarginBottom}>
           <Label htmlFor="imageId">Sfondi caffettosi e romanticoni</Label>
           <Select
-            value={goodMorning?.imageId}
+            value={goodMorning.imageId}
             onChange={onInputChange}
             id="imageId"
             name="imageId"
@@ -57,7 +63,7 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
           <Label htmlFor="mainTitle">Buongiornissimo Principale</Label>
           <Input
             onChange={onInputChange}
-            value={goodMorning?.mainTitle}
+            value={goodMorning.mainTitle}
             backgroundColor="white"
             id="mainTitle"
             name="mainTitle"
@@ -66,20 +72,25 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
           />
         </Box>
         <Box marginBottom={inputsMarginBottom}>
-          <Label htmlFor="ispirational">
+          <Label htmlFor="inspirational">
             Ispira i tuoi amici con una frase ad effetto
           </Label>
           <Textarea
             onChange={onInputChange}
-            id="ispirational"
-            name="ispirational"
+            id="inspirational"
+            name="inspirational"
             maxLength={100}
             backgroundColor="white"
             rows={6}
-            value={goodMorning?.inspirational}
+            value={goodMorning.inspirational}
           />
         </Box>
-        <Button variant="primary" width="100%" style={buttonStyle}>
+        <Button
+          variant="primary"
+          width="100%"
+          style={buttonStyle}
+          onClick={onSubmit}
+        >
           Crea Buongiornissimo
         </Button>
       </Box>
