@@ -30,7 +30,7 @@ export const Creator: React.FC = () => {
         <Form goodMorning={goodMorning} onInputChange={onInputChange} />
       </Col>
       <Col sm={6}>
-        <GoodMorningBox goodMorning={goodMorning} />
+        <GoodMorningBox goodMorning={goodMorning} showCtas={false} />
       </Col>
     </Row>
   );

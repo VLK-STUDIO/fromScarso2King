@@ -6,6 +6,6 @@ export const getGoodMorning = createSelector(
   getGoodMorningsObject,
   (_: AppState, id: string) => id,
   (byId, id) => {
-    return byId[id];
+    return byId[id] || {};
   }
 );
