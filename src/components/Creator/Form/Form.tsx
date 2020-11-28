@@ -1,9 +1,10 @@
-import React, { useMemo, useCallback } from "react";
+import React, { useMemo } from "react";
 import { Heading, Box, Button } from "rebass";
 import { Input, Label, Select, Textarea } from "@rebass/forms";
 import { GoodMorning } from "../../../types";
 import { useImages } from "../../../state/images";
-import { useGoodMornings } from "../../../state/goodMornings";
+import { useCurrentGoodMorning } from "../../../state/goodMornings";
+import { styles } from "./styles";
 
 const inputsMarginBottom = "20px";
 
@@ -16,22 +17,13 @@ type Props = {
   ) => void;
 };
 
-const boxStyle = {
-  borderRadius: "10px",
-  backgroundImage:
-    "url(https://static2-living.corriereobjects.it/wp-content/uploads/2018/11/villeroy3-660x440.jpg)",
-  overflow: "hidden",
-};
-
-const buttonStyle = { cursor: "pointer", backgroundColor: "#F365B5" };
-
 export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
   const { images } = useImages();
-  const { createGoodMorning } = useGoodMornings();
-
-  const onSubmit = useCallback(() => {
-    createGoodMorning(goodMorning);
-  }, [createGoodMorning, goodMorning]);
+  const {
+    isEdit,
+    resetCurrentGoodMorning,
+    submitGoodMorning,
+  } = useCurrentGoodMorning();
 
   const options = useMemo(() => {
     return images.map((image) => (
@@ -41,11 +33,13 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
     ));
   }, [images]);
 
+  const prefix = useMemo(() => (isEdit ? "Modifica" : "Crea"), [isEdit]);
+
   return (
-    <Box style={boxStyle}>
+    <Box style={styles.boxStyle}>
       <Box backgroundColor="rgba(255, 255, 255, 0.8)" padding="20px">
         <Heading marginBottom={inputsMarginBottom}>
-          Nuovo Buongiornissimo
+          {prefix} Buongiornissimo
         </Heading>
         <Box marginBottom={inputsMarginBottom}>
           <Label htmlFor="imageId">Sfondi caffettosi e romanticoni</Label>
@@ -85,14 +79,28 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
             value={goodMorning.inspirational}
           />
         </Box>
-        <Button
-          variant="primary"
-          width="100%"
-          style={buttonStyle}
-          onClick={onSubmit}
-        >
-          Crea Buongiornissimo
-        </Button>
+        <Box style={styles.buttonsContainer}>
+          <Button
+            variant="primary"
+            width="100%"
+            marginRight={isEdit ? "5px" : undefined}
+            style={styles.buttonStyle}
+            onClick={submitGoodMorning}
+          >
+            {prefix} Buongiornissimo
+          </Button>
+          {isEdit ? (
+            <Button
+              variant="primary"
+              width="100%"
+              marginLeft={isEdit ? "5px" : undefined}
+              style={styles.buttonStyle}
+              onClick={resetCurrentGoodMorning}
+            >
+              Annulla
+            </Button>
+          ) : null}
+        </Box>
       </Box>
     </Box>
   );
