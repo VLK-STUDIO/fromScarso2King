@@ -3,10 +3,12 @@ import { DomainStatus } from "../../types";
 import * as fetchActions from "../actions/fetch";
 import * as createActions from "../actions/create";
 import * as updateActions from "../actions/update";
+import * as setCurrentActions from "../actions/setCurrent";
 import { GoodMorningState } from "../types";
 import * as fetchCases from "./fetch";
 import * as createCases from "./create";
 import * as updateCases from "./update";
+import * as setCurrentCases from "./setCurrent";
 
 const initialState: GoodMorningState = {
   data: {
@@ -55,6 +57,14 @@ export const goodMorningsRootReducer = createReducer<GoodMorningState>(
       .addCase(
         getType(updateActions.updateGoodMorningFailure),
         updateCases.updateGoodMorningsFailureCase
+      )
+      .addCase(
+        getType(setCurrentActions.setCurrentGoodMorning),
+        setCurrentCases.setCurrentGoodMorningCase
+      )
+      .addCase(
+        getType(setCurrentActions.resetCurrentGoodMorning),
+        setCurrentCases.resetCurrentGoodMorningCase
       );
   }
 );

@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from "react";
 import { Box, Heading, Button } from "rebass";
 import { GoodMorning } from "../../types";
 import { useImage } from "../../state/images/hooks";
+import { useCurrentGoodMorning } from "../../state/goodMornings";
 import { ImageValue } from "../../state";
 import { useStyles } from "./styles";
 
@@ -16,12 +17,12 @@ const textCommonStyle = {
 
 export const GoodMorningBox: React.FC<Props> = React.memo(
   ({ goodMorning, showCtas = true }) => {
+    const { setGoodMorning } = useCurrentGoodMorning();
     const image: ImageValue = useImage(goodMorning.imageId || "1");
-    const styles = useStyles(image.url);
+    const styles = useStyles(image?.url);
     const onClickEdit = useCallback(() => {
-      // TODO: set the current goodMorning inside the form
-      // TODO: scroll to top
-    }, []);
+      setGoodMorning(goodMorning);
+    }, [goodMorning, setGoodMorning]);
 
     const ctaBox = useMemo(() => {
       if (showCtas) {

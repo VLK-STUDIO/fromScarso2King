@@ -1,15 +1,15 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { Row, Col } from "react-grid-system";
-import { Form } from "./Form";
+import { useCurrentGoodMorning } from "../../state/goodMornings";
 import { GoodMorningBox } from "../GoodMorningBox";
-import { GoodMorning } from "../../types";
+import { Form } from "./Form";
 
 const rowStyle = {
   paddingBottom: "90px",
 };
 
 export const Creator: React.FC = () => {
-  const [goodMorning, setGoodMorning] = useState<Partial<GoodMorning>>({});
+  const { goodMorning, setGoodMorning } = useCurrentGoodMorning();
   const onInputChange = useCallback(
     (
       e: React.FormEvent<
@@ -21,7 +21,7 @@ export const Creator: React.FC = () => {
         [e?.currentTarget?.name]: e?.currentTarget?.value,
       });
     },
-    [goodMorning]
+    [goodMorning, setGoodMorning]
   );
 
   return (
