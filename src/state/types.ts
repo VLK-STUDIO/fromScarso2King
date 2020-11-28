@@ -1,5 +1,6 @@
 import { GoodMorningState } from "./goodMornings";
 import { ImagesState } from "./images/types";
+import { NotificationState } from './notifications/types/general';
 
 export enum DomainStatus {
   IDLE = "IDLE",
@@ -27,4 +28,5 @@ export type ReducerError = {
 export type AppState = {
   images: ImagesState;
   goodMornings: GoodMorningState;
+  notification: NotificationState;
 };
