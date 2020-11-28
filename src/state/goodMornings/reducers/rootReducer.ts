@@ -1,13 +1,15 @@
 import { createReducer, getType } from "@reduxjs/toolkit";
 import { DomainStatus } from "../../types";
+import { GoodMorningState } from "../types";
 import * as fetchActions from "../actions/fetch";
 import * as createActions from "../actions/create";
 import * as updateActions from "../actions/update";
+import * as removeActions from "../actions/remove";
 import * as setCurrentActions from "../actions/setCurrent";
-import { GoodMorningState } from "../types";
 import * as fetchCases from "./fetch";
 import * as createCases from "./create";
 import * as updateCases from "./update";
+import * as removeCases from "./remove";
 import * as setCurrentCases from "./setCurrent";
 
 const initialState: GoodMorningState = {
@@ -57,6 +59,18 @@ export const goodMorningsRootReducer = createReducer<GoodMorningState>(
       .addCase(
         getType(updateActions.updateGoodMorningFailure),
         updateCases.updateGoodMorningsFailureCase
+      )
+      .addCase(
+        getType(removeActions.removeGoodMorningRequest),
+        removeCases.removeGoodMorningsRequestCase
+      )
+      .addCase(
+        getType(removeActions.removeGoodMorningSuccess),
+        removeCases.removeGoodMorningsSuccessCase
+      )
+      .addCase(
+        getType(removeActions.removeGoodMorningFailure),
+        removeCases.removeGoodMorningsFailureCase
       )
       .addCase(
         getType(setCurrentActions.setCurrentGoodMorning),

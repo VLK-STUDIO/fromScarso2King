@@ -1,6 +1,6 @@
 import { formatter } from "../../utils";
 import {
-  UpdateGoodMorning,
+  UpdateGoodMorningRequest,
   UpdateGoodMorningSuccess,
   UpdateGoodMorningsFailure,
   GoodMorningState,
@@ -8,7 +8,7 @@ import {
 
 export function updateGoodMorningsRequestCase(
   state: GoodMorningState,
-  action: UpdateGoodMorning
+  action: UpdateGoodMorningRequest
 ): GoodMorningState {
   return {
     ...state,

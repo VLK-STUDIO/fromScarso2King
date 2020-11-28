@@ -119,6 +119,53 @@ describe("formatter.insert", () => {
   });
 });
 
+describe("formatter.remove", () => {
+  const cases = [
+    {
+      input: {
+        data: {
+          byId: {
+            test: { id: "test", name: "test" },
+            example: { id: "example", name: "example" },
+          },
+          allIds: ["test", "example"],
+        },
+        id: "test",
+      },
+      expected: {
+        byId: {
+          example: { id: "example", name: "example" },
+        },
+        allIds: ["example"],
+      },
+      message: "should remove the item from the list",
+    },
+    {
+      input: {
+        data: {
+          byId: { test: { id: "test", name: "test" } },
+          allIds: ["test"],
+        },
+        id: "example",
+      },
+      expected: {
+        byId: {
+          test: { id: "test", name: "test" },
+        },
+        allIds: ["test"],
+      },
+      message: "should not remove items if the id does not exist",
+    },
+  ];
+
+  cases.forEach(({ input, message, expected }) => {
+    const result = formatter<object>(input.data as ListData<object>);
+    test(message, () => {
+      expect(result.remove({ id: input.id }).get()).toEqual(expected);
+    });
+  });
+});
+
 describe("formatter - removePlaceholder + insert", () => {
   const data = {
     byId: { "-1": { name: "example" }, test: { name: "text", id: "test" } },
