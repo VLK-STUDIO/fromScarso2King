@@ -16,6 +16,13 @@ type InsertParams<T extends object> = Omit<Params<T>, "placeholderKey"> & {
   key: FilterKeys<T, string>;
 };
 
+type DeleteParams<T extends object> = Omit<
+  Params<T>,
+  "placeholderKey" | "item"
+> & {
+  id: string;
+};
+
 function formatListForCreation<T extends object>({
   data,
   item,
@@ -64,6 +71,22 @@ function insertItemIntoList<T extends object>({
   };
 }
 
+function removeItemFromList<T extends object>({
+  id,
+  data,
+}: DeleteParams<T>): ListData<T> {
+  const allIds = data.allIds.filter((current) => current !== id);
+  const byId = allIds.reduce(
+    (acc, current) => ({ ...acc, [current]: data.byId[current] }),
+    {}
+  );
+
+  return {
+    allIds,
+    byId,
+  };
+}
+
 export function formatter<T extends object>(initialData: ListData<T>) {
   const callback = (data: ListData<T>) => ({
     forCreation: (params: Omit<Params<T>, "data">) => {
@@ -76,6 +99,10 @@ export function formatter<T extends object>(initialData: ListData<T>) {
     },
     insert: (params: Omit<InsertParams<T>, "data">) => {
       const newData = insertItemIntoList({ ...params, data });
+      return formatter(newData);
+    },
+    remove: (params: Omit<DeleteParams<T>, "data">) => {
+      const newData = removeItemFromList({ ...params, data });
       return formatter(newData);
     },
     get: () => data,
