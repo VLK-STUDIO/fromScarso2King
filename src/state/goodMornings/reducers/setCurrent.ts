@@ -16,8 +16,6 @@ export function resetCurrentGoodMorningCase(
 ): GoodMorningState {
   return {
     ...state,
-    currentGoodMorning: state.currentGoodMorning
-      ? { ...state.currentGoodMorning, id: undefined }
-      : undefined,
+    currentGoodMorning: undefined,
   };
 }

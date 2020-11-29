@@ -44,7 +44,7 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
         <Box marginBottom={inputsMarginBottom}>
           <Label htmlFor="imageId">Sfondi caffettosi e romanticoni</Label>
           <Select
-            value={goodMorning.imageId}
+            value={goodMorning.imageId || "1"}
             onChange={onInputChange}
             id="imageId"
             name="imageId"
@@ -57,7 +57,7 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
           <Label htmlFor="mainTitle">Buongiornissimo Principale</Label>
           <Input
             onChange={onInputChange}
-            value={goodMorning.mainTitle}
+            value={goodMorning.mainTitle || ""}
             backgroundColor="white"
             id="mainTitle"
             name="mainTitle"
@@ -76,7 +76,7 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
             maxLength={100}
             backgroundColor="white"
             rows={6}
-            value={goodMorning.inspirational}
+            value={goodMorning.inspirational || ""}
           />
         </Box>
         <Box style={styles.buttonsContainer}>
