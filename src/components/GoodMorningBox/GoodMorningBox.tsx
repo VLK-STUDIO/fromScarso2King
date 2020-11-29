@@ -1,5 +1,7 @@
 import React, { useCallback, useMemo } from "react";
 import { Box, Heading, Button } from "rebass";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { GoodMorning } from "../../types";
 import { useImage } from "../../state/images/hooks";
 import {
@@ -14,10 +16,6 @@ type Props = {
   showCtas?: boolean;
 };
 
-const textCommonStyle = {
-  textShadow: "1px 1px 5px rgba(0,0,0,1)",
-};
-
 export const GoodMorningBox: React.FC<Props> = React.memo(
   ({ goodMorning, showCtas = true }) => {
     const { setGoodMorning } = useCurrentGoodMorning();
@@ -26,6 +24,7 @@ export const GoodMorningBox: React.FC<Props> = React.memo(
     const styles = useStyles(image?.url);
 
     const onClickEdit = useCallback(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       setGoodMorning(goodMorning);
     }, [goodMorning, setGoodMorning]);
 
@@ -38,9 +37,15 @@ export const GoodMorningBox: React.FC<Props> = React.memo(
         return (
           <Box style={styles.ctaContainer}>
             <Button onClick={onClickEdit} style={styles.editButton}>
-              Modifica
+              <FontAwesomeIcon icon={faEdit} />
             </Button>
-            <Button onClick={onClickRemove}>Elimina</Button>
+            <Button
+              onClick={onClickRemove}
+              backgroundColor="red"
+              style={styles.button}
+            >
+              <FontAwesomeIcon icon={faTrash} />
+            </Button>
           </Box>
         );
       }
@@ -50,6 +55,7 @@ export const GoodMorningBox: React.FC<Props> = React.memo(
       onClickEdit,
       onClickRemove,
       showCtas,
+      styles.button,
       styles.ctaContainer,
       styles.editButton,
     ]);
@@ -64,13 +70,13 @@ export const GoodMorningBox: React.FC<Props> = React.memo(
           <Heading
             fontFamily="sans-serif"
             fontSize="25px"
-            style={textCommonStyle}
+            style={styles.text}
             color={image.defaultTextColor}
           >
             {goodMorning.inspirational}
           </Heading>
           <Heading
-            style={textCommonStyle}
+            style={styles.text}
             fontFamily="cursive"
             fontSize="60px"
             color={image.defaultTextColor}

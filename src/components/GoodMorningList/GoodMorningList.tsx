@@ -5,7 +5,8 @@ import { useGoodMornings } from "../../state/goodMornings";
 import { List } from "./List";
 
 export const GoodMorningList = React.memo(() => {
-  const { goodMornings } = useGoodMornings();
+  const { goodMornings, isLoading } = useGoodMornings();
+
   return (
     <>
       <Row>
@@ -16,7 +17,7 @@ export const GoodMorningList = React.memo(() => {
         </Col>
       </Row>
       <Row>
-        <List goodMornings={goodMornings} />
+        <List goodMornings={goodMornings} isLoading={isLoading} />
       </Row>
     </>
   );

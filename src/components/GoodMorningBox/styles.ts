@@ -1,23 +1,38 @@
 import { CSSProperties } from "react";
 
-export const useStyles = (
-  imgUrl: string
-): Record<"container" | "ctaContainer" | "editButton", CSSProperties> => ({
-  container: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    backgroundImage: `url(${imgUrl})`,
-    borderRadius: "10px",
-    backgroundSize: "cover",
-    backgroundPosition: "center center",
-  },
-  ctaContainer: {
-    display: "flex",
-    alignSelf: "flex-end",
-    justifyContent: "center",
-  },
-  editButton: {
-    marginRight: "5px",
-  },
+const container = (imgUrl: string): CSSProperties => ({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-between",
+  backgroundImage: `url(${imgUrl})`,
+  borderRadius: "10px",
+  backgroundSize: "cover",
+  backgroundPosition: "center center",
+});
+
+const ctaContainer: CSSProperties = {
+  display: "flex",
+  alignSelf: "flex-end",
+  justifyContent: "center",
+};
+
+const text: CSSProperties = {
+  textShadow: "1px 1px 5px rgba(0,0,0,1)",
+};
+
+const button: CSSProperties = {
+  cursor: "pointer",
+};
+
+const editButton: CSSProperties = {
+  ...button,
+  marginRight: "5px",
+};
+
+export const useStyles = (imgUrl: string) => ({
+  container: container(imgUrl),
+  ctaContainer,
+  text,
+  button,
+  editButton,
 });
