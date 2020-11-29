@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { Heading, Box, Button } from "rebass";
 import { Input, Label, Select, Textarea } from "@rebass/forms";
 import { GoodMorning } from "../../../types";
@@ -25,6 +25,11 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
     submitGoodMorning,
   } = useCurrentGoodMorning();
 
+  const onSubmit = useCallback(() => {
+    submitGoodMorning();
+    resetCurrentGoodMorning();
+  }, [resetCurrentGoodMorning, submitGoodMorning]);
+
   const options = useMemo(() => {
     return images.map((image) => (
       <option value={image.id} key={image.id}>
@@ -34,6 +39,10 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
   }, [images]);
 
   const prefix = useMemo(() => (isEdit ? "Modifica" : "Crea"), [isEdit]);
+
+  const disabled = useMemo(() => {
+    return !goodMorning.mainTitle;
+  }, [goodMorning.mainTitle]);
 
   return (
     <Box style={styles.boxStyle}>
@@ -83,9 +92,10 @@ export const Form: React.FC<Props> = ({ onInputChange, goodMorning }) => {
           <Button
             variant="primary"
             width="100%"
+            disabled={disabled}
             marginRight={isEdit ? "5px" : undefined}
-            style={styles.buttonStyle}
-            onClick={submitGoodMorning}
+            style={styles.mainButtonStyle(disabled)}
+            onClick={onSubmit}
           >
             {prefix} Buongiornissimo
           </Button>

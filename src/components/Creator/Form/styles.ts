@@ -11,13 +11,20 @@ const buttonsContainer: CSSProperties = {
   display: "flex",
 };
 
-const buttonStyle: CSSProperties = {
+const buttonStyle = {
   cursor: "pointer",
   backgroundColor: "#F365B5",
 };
+
+const mainButtonStyle = (disabled?: boolean): CSSProperties => ({
+  ...buttonStyle,
+  cursor: disabled ? "not-allowed" : buttonStyle.cursor,
+  backgroundColor: disabled ? "#ffcce9" : buttonStyle.backgroundColor,
+});
 
 export const styles = {
   boxStyle,
   buttonStyle,
   buttonsContainer,
+  mainButtonStyle,
 };
