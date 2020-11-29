@@ -38,7 +38,9 @@ export const NotificationList: React.FC = () => {
   const notificationList = React.useMemo(() => {
     return notifications
       .filter((notification) => notification.visible)
-      .map((notification) => <NotificationItem notification={notification} />);
+      .map((notification) => (
+        <NotificationItem key={notification.id} notification={notification} />
+      ));
   }, [notifications]);
 
   const styles: React.CSSProperties = {
