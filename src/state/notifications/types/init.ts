@@ -1,10 +1,10 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-export enum InitMessagesTypes {
+export enum InitNotificationsTypes {
   SYNC = 'notification/init/sync',
 }
 
-export type InitMessagesPayload = {
+export type InitNotificationsPayload = {
   [key: string]: string;
 };
 
-export type InitMessages = PayloadAction<InitMessagesPayload, InitMessagesTypes.SYNC>;
+export type InitMessages = PayloadAction<InitNotificationsPayload, InitNotificationsTypes.SYNC>;

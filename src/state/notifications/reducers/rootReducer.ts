@@ -22,7 +22,7 @@ export const notificationRootReducer = createReducer(
         removeNotificationCases.removeNotificationCase,
       )
       .addCase(
-        getType(actions.initMessages),
+        getType(actions.initNotifications),
         initMessagesCases.initMessagesCase,
       );
   },

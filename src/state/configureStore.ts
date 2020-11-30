@@ -6,7 +6,7 @@ import { imagesRootSaga } from "./images";
 import { goodMorningsRootSaga, goodMorningsRootReducer } from "./goodMornings";
 import { notificationRootSaga } from './notifications';
 import { notificationRootReducer } from './notifications/reducers/rootReducer';
-import { initMessages } from './notifications/actions/init';
+import { initNotifications } from './notifications/actions/init';
 import { messages } from "../constants/messages";
 
 const reducer = combineReducers({
@@ -28,6 +28,6 @@ export const store = configureStore({
   devTools: true,
 });
 
-store.dispatch(initMessages(messages))
+store.dispatch(initNotifications(messages))
 
 sagaMiddleware.run(rootSaga);
