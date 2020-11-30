@@ -1,10 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { DomainStatus } from "../types";
-import {
-  fetchImagesRequest,
-  fetchImagesSuccess,
-  fetchImagesFailure,
-} from "./actions";
+import * as actions from "./actions";
 import { ImagesState, FetchImagesSuccess, FetchImagesFailure } from "./types";
 
 const initialState: ImagesState = {
@@ -44,8 +40,8 @@ export const imagesReducer = createReducer<ImagesState>(
   initialState,
   (builder) => {
     builder
-      .addCase(fetchImagesRequest, fetchImagesRequestCase)
-      .addCase(fetchImagesSuccess, fetchImagesSuccessCase)
-      .addCase(fetchImagesFailure, fetchImagesFailureCase);
+      .addCase(actions.fetchImagesRequest, fetchImagesRequestCase)
+      .addCase(actions.fetchImagesSuccess, fetchImagesSuccessCase)
+      .addCase(actions.fetchImagesFailure, fetchImagesFailureCase);
   }
 );

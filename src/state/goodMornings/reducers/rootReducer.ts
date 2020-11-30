@@ -1,11 +1,7 @@
 import { createReducer, getType } from "@reduxjs/toolkit";
 import { DomainStatus } from "../../types";
 import { GoodMorningState } from "../types";
-import * as fetchActions from "../actions/fetch";
-import * as createActions from "../actions/create";
-import * as updateActions from "../actions/update";
-import * as removeActions from "../actions/remove";
-import * as setCurrentActions from "../actions/setCurrent";
+import * as actions from "../actions";
 import * as fetchCases from "./fetch";
 import * as createCases from "./create";
 import * as updateCases from "./update";
@@ -25,59 +21,59 @@ export const goodMorningsRootReducer = createReducer<GoodMorningState>(
   (builder) => {
     builder
       .addCase(
-        fetchActions.fetchGoodMorningsRequest,
+        actions.fetchGoodMorningsRequest,
         fetchCases.fetchGoodMorningsRequestCase
       )
       .addCase(
-        getType(fetchActions.fetchGoodMorningsSuccess),
+        getType(actions.fetchGoodMorningsSuccess),
         fetchCases.fetchGoodMorningsSuccessCase
       )
       .addCase(
-        getType(fetchActions.fetchGoodMorningsFailure),
+        getType(actions.fetchGoodMorningsFailure),
         fetchCases.fetchGoodMorningsFailureCase
       )
       .addCase(
-        getType(createActions.createGoodMorningRequest),
+        getType(actions.createGoodMorningRequest),
         createCases.createGoodMorningsRequestCase
       )
       .addCase(
-        getType(createActions.createGoodMorningSuccess),
+        getType(actions.createGoodMorningSuccess),
         createCases.createGoodMorningsSuccessCase
       )
       .addCase(
-        getType(createActions.createGoodMorningFailure),
+        getType(actions.createGoodMorningFailure),
         createCases.createGoodMorningsFailureCase
       )
       .addCase(
-        getType(updateActions.updateGoodMorningRequest),
+        getType(actions.updateGoodMorningRequest),
         updateCases.updateGoodMorningsRequestCase
       )
       .addCase(
-        getType(updateActions.updateGoodMorningSuccess),
+        getType(actions.updateGoodMorningSuccess),
         updateCases.updateGoodMorningsSuccessCase
       )
       .addCase(
-        getType(updateActions.updateGoodMorningFailure),
+        getType(actions.updateGoodMorningFailure),
         updateCases.updateGoodMorningsFailureCase
       )
       .addCase(
-        getType(removeActions.removeGoodMorningRequest),
+        getType(actions.removeGoodMorningRequest),
         removeCases.removeGoodMorningsRequestCase
       )
       .addCase(
-        getType(removeActions.removeGoodMorningSuccess),
+        getType(actions.removeGoodMorningSuccess),
         removeCases.removeGoodMorningsSuccessCase
       )
       .addCase(
-        getType(removeActions.removeGoodMorningFailure),
+        getType(actions.removeGoodMorningFailure),
         removeCases.removeGoodMorningsFailureCase
       )
       .addCase(
-        getType(setCurrentActions.setCurrentGoodMorning),
+        getType(actions.setCurrentGoodMorning),
         setCurrentCases.setCurrentGoodMorningCase
       )
       .addCase(
-        getType(setCurrentActions.resetCurrentGoodMorning),
+        getType(actions.resetCurrentGoodMorning),
         setCurrentCases.resetCurrentGoodMorningCase
       );
   }
