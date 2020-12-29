@@ -1,5 +1,6 @@
-import { createAction } from '@reduxjs/toolkit';
-import { RemoveNotificationTypes } from '../types';
-import { RemoveNotificationPayload } from '../types/remove';
+import { createAction } from "@reduxjs/toolkit";
+import { RemoveNotificationTypes, RemoveNotificationPayload } from "../types";
 
-export const removeNotification = createAction<RemoveNotificationPayload>(RemoveNotificationTypes.SYNC);
+export const removeNotification = createAction<RemoveNotificationPayload>(
+  RemoveNotificationTypes.SYNC
+);

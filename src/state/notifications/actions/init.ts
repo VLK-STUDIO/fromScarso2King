@@ -1,5 +1,6 @@
-import { createAction } from '@reduxjs/toolkit';
-import { InitNotificationsPayload, InitNotificationsTypes } from '../types/init';
+import { createAction } from "@reduxjs/toolkit";
+import { InitNotificationsPayload, InitNotificationsTypes } from "../types";
 
-export const initNotifications = createAction<InitNotificationsPayload>(InitNotificationsTypes.SYNC);
-
+export const initNotifications = createAction<InitNotificationsPayload>(
+  InitNotificationsTypes.SYNC
+);
