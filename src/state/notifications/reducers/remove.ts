@@ -1,9 +1,8 @@
-import { RemoveNotification } from '../types';
-import { NotificationState } from '../types/general';
+import { RemoveNotification, NotificationState } from "../types";
 
 export const removeNotificationCase = (
   state: NotificationState,
-  action: RemoveNotification,
+  action: RemoveNotification
 ): NotificationState => ({
   ...state,
   notifications: {

@@ -1,13 +1,14 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import { all, fork } from "redux-saga/effects";
-import { imagesReducer } from "./images/reducers";
-import { imagesRootSaga } from "./images";
+import { messages } from "../constants";
+import { imagesReducer, imagesRootSaga } from "./images";
 import { goodMorningsRootSaga, goodMorningsRootReducer } from "./goodMornings";
-import { notificationRootSaga } from './notifications';
-import { notificationRootReducer } from './notifications/reducers/rootReducer';
-import { initNotifications } from './notifications/actions/init';
-import { messages } from "../constants/messages";
+import {
+  initNotifications,
+  notificationRootSaga,
+  notificationRootReducer,
+} from "./notifications";
 
 const reducer = combineReducers({
   images: imagesReducer,
@@ -28,6 +29,6 @@ export const store = configureStore({
   devTools: true,
 });
 
-store.dispatch(initNotifications(messages))
+store.dispatch(initNotifications(messages));
 
 sagaMiddleware.run(rootSaga);

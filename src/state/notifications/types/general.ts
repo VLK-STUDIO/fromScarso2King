@@ -3,8 +3,8 @@ export type Messages = {
 };
 
 export enum NotificationType {
-  ERROR = 'ERROR',
-  SUCCESS = 'SUCCESS',
+  ERROR = "ERROR",
+  SUCCESS = "SUCCESS",
 }
 
 export type Notification = {

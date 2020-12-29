@@ -1,10 +1,12 @@
-import { NotificationState } from '../types/general';
-import { InitMessages } from '../types/init';
+import { NotificationState, InitMessages } from "../types";
 
-export const initMessagesCase = (state: NotificationState, action: InitMessages) => ({
+export const initMessagesCase = (
+  state: NotificationState,
+  action: InitMessages
+) => ({
   ...state,
   messages: {
     ...state.messages,
     ...action.payload,
-  }
-})
+  },
+});

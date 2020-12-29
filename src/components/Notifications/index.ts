@@ -1,1 +1,1 @@
-export * from './NotificationList';
+export * from "./NotificationList";

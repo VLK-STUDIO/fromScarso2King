@@ -1,6 +1,6 @@
-import React from 'react';
-import { Heading } from 'rebass';
-import { Row, Col } from 'react-grid-system';
+import React from "react";
+import { Heading } from "rebass";
+import { Row, Col } from "react-grid-system";
 
 export const MainTitle: React.FC = () => (
   <Row>

@@ -1,6 +1,6 @@
 import { GoodMorningState } from "./goodMornings";
 import { ImagesState } from "./images/types";
-import { NotificationState } from './notifications/types/general';
+import { NotificationState } from "./notifications/types/general";
 
 export enum DomainStatus {
   IDLE = "IDLE",
