@@ -1,12 +1,12 @@
 import { AppState } from "../../types";
 import { createSelector } from "@reduxjs/toolkit";
-import { NotificationState, Notification } from "../types";
+import { NotificationState, Notification, Messages } from "../types";
 
 const getNotificationState = (state: AppState) => state.notification;
 
 export const getMessages = createSelector(
   getNotificationState,
-  (notificationState) => notificationState.messages
+  (notificationState): Messages => notificationState.messages
 );
 
 export const getNotifications = createSelector(
